@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clipzy Design System</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            /* Color System */
+            --primary: #007bff;
+            --primary-light: #4da3ff;
+            --primary-dark: #0056b3;
+            
+            --secondary: #5865f2;
+            --secondary-light: #7983f5;
+            --secondary-dark: #4752c4;
+            
+            --success: #2ecc71;
+            --success-light: #58d68d;
+            --success-dark: #27ae60;
+            
+            --warning: #f39c12;
+            --warning-light: #f4b350;
+            --warning-dark: #d68910;
+            
+            --error: #e74c3c;
+            --error-light: #ec7063;
+            --error-dark: #cb4335;
+            
+            --neutral: #9b59b6;
+            --neutral-light: #af7ac5;
+            --neutral-dark: #884ea0;
+            
+            /* Neutral Colors */
+            --gray-50: #f9fafb;
+            --gray-100: #f3f4f6;
+            --gray-200: #e5e7eb;
+            --gray-300: #d1d5db;
+            --gray-400: #9ca3af;
+            --gray-500: #6b7280;
+            --gray-600: #4b5563;
+            --gray-700: #374151;
+            --gray-800: #1f2937;
+            --gray-900: #111827;
+            
+            /* Typography */
+            --font-family: 'Inter', "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            
+            --text-xs: 0.75rem;
+            --text-sm: 0.875rem;
+            --text-base: 1rem;
+            --text-lg: 1.125rem;
+            --text-xl: 1.25rem;
+            --text-2xl: 1.5rem;
+            --text-3xl: 1.875rem;
+            --text-4xl: 2.25rem;
+            
+            --font-light: 300;
+            --font-normal: 400;
+            --font-medium: 500;
+            --font-semibold: 600;
+            --font-bold: 700;
+            
+            /* Spacing */
+            --space-1: 0.25rem;
+            --space-2: 0.5rem;
+            --space-3: 0.75rem;
+            --space-4: 1rem;
+            --space-5: 1.25rem;
+            --space-6: 1.5rem;
+            --space-8: 2rem;
+            --space-10: 2.5rem;
+            --space-12: 3rem;
+            --space-16: 4rem;
+            --space-20: 5rem;
+            --space-24: 6rem;
+            
+            /* Border Radius */
+            --radius-sm: 0.125rem;
+            --radius: 0.25rem;
+            --radius-md: 0.375rem;
+            --radius-lg: 0.5rem;
+            --radius-xl: 0.75rem;
+            --radius-2xl: 1rem;
+            --radius-full: 9999px;
+            
+            /* Shadows */
+            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            --shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            --shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            
+            /* Transitions */
+            --transition: all 0.2s ease;
+            --transition-slow: all 0.4s ease;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: var(--font-family);
+            line-height: 1.6;
+            color: var(--gray-800);
+            background-color: var(--gray-50);
+            padding: var(--space-8);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        /* Header */
+        .header {
+            text-align: center;
+            margin-bottom: var(--space-12);
+            padding: var(--space-8);
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            border-radius: var(--radius-xl);
+            color: white;
+            box-shadow: var(--shadow-lg);
+        }
+        
+        h1 {
+            font-size: var(--text-4xl);
+            margin-bottom: var(--space-4);
+            font-weight: var(--font-bold);
+        }
+        
+        .subtitle {
+            font-size: var(--text-xl);
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        /* Design System Grid */
+        .design-system {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--space-8);
+            margin-bottom: var(--space-12);
+        }
+        
+        .section {
+            background: white;
+            border-radius: var(--radius-lg);
+            padding: var(--space-6);
+            box-shadow: var(--shadow-md);
+        }
+        
+        .section-title {
+            font-size: var(--text-2xl);
+            margin-bottom: var(--space-6);
+            padding-bottom: var(--space-3);
+            border-bottom: 2px solid var(--primary);
+            color: var(--gray-800);
+            font-weight: var(--font-semibold);
+        }
+        
+        /* Color Palette */
+        .color-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: var(--space-4);
+        }
+        
+        .color-item {
+            text-align: center;
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+        }
+        
+        .color-box {
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: var(--font-semibold);
+            color: white;
+        }
+        
+        .color-name {
+            padding: var(--space-2);
+            background: white;
+            font-size: var(--text-xs);
+            color: var(--gray-600);
+            border-top: 1px solid var(--gray-200);
+        }
+        
+        /* Typography */
+        .typography-item {
+            margin-bottom: var(--space-5);
+        }
+        
+        .typography-example {
+            margin-bottom: var(--space-1);
+        }
+        
+        .typography-details {
+            color: var(--gray-600);
+            font-size: var(--text-sm);
+        }
+        
+        /* Components */
+        .component {
+            margin-bottom: var(--space-6);
+        }
+        
+        .component-title {
+            font-size: var(--text-lg);
+            margin-bottom: var(--space-4);
+            color: var(--gray-800);
+            font-weight: var(--font-medium);
+        }
+        
+        .button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: var(--space-3) var(--space-5);
+            border-radius: var(--radius);
+            font-weight: var(--font-medium);
+            text-decoration: none;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            font-family: var(--font-family);
+            font-size: var(--text-base);
+            line-height: 1;
+        }
+        
+        .button-primary {
+            background: var(--primary);
+            color: white;
+        }
+        
+        .button-primary:hover {
+            background: var(--primary-dark);
+            transform: translateY(-1px);
+            box-shadow: var(--shadow-md);
+        }
+        
+        .button-secondary {
+            background: var(--secondary);
+            color: white;
+        }
+        
+        .button-secondary:hover {
+            background: var(--secondary-dark);
+            transform: translateY(-1px);
+            box-shadow: var(--shadow-md);
+        }
+        
+        .button-success {
+            background: var(--success);
+            color: white;
+        }
+        
+        .button-success:hover {
+            background: var(--success-dark);
+            transform: translateY(-1px);
+            box-shadow: var(--shadow-md);
+        }
+        
+        .button-error {
+            background: var(--error);
+            color: white;
+        }
+        
+        .button-error:hover {
+            background: var(--error-dark);
+            transform: translateY(-1px);
+            box-shadow: var(--shadow-md);
+        }
+        
+        .button-outline {
+            background: transparent;
+            color: var(--primary);
+            border: 1px solid var(--primary);
+        }
+        
+        .button-outline:hover {
+            background: var(--primary);
+            color: white;
+        }
+        
+        .button-group {
+            display: flex;
+            gap: var(--space-3);
+            margin-bottom: var(--space-4);
+        }
+        
+        .card {
+            background: white;
+            border-radius: var(--radius-lg);
+            padding: var(--space-5);
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--gray-200);
+            transition: var(--transition);
+        }
+        
+        .card:hover {
+            box-shadow: var(--shadow-md);
+            transform: translateY(-2px);
+        }
+        
+        .card-title {
+            font-size: var(--text-lg);
+            margin-bottom: var(--space-3);
+            color: var(--gray-800);
+            font-weight: var(--font-semibold);
+        }
+        
+        .form-group {
+            margin-bottom: var(--space-5);
+        }
+        
+        .form-label {
+            display: block;
+            margin-bottom: var(--space-2);
+            font-weight: var(--font-medium);
+            color: var(--gray-700);
+        }
+        
+        .form-input {
+            width: 100%;
+            padding: var(--space-3);
+            border: 1px solid var(--gray-300);
+            border-radius: var(--radius);
+            font-family: var(--font-family);
+            font-size: var(--text-base);
+            transition: var(--transition);
+        }
+        
+        .form-input:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.1);
+        }
+        
+        .alert {
+            padding: var(--space-4);
+            border-radius: var(--radius);
+            margin-bottom: var(--space-4);
+            display: flex;
+            align-items: flex-start;
+        }
+        
+        .alert-success {
+            background-color: rgba(46, 204, 113, 0.1);
+            border-left: 4px solid var(--success);
+            color: var(--success-dark);
+        }
+        
+        .alert-warning {
+            background-color: rgba(243, 156, 18, 0.1);
+            border-left: 4px solid var(--warning);
+            color: var(--warning-dark);
+        }
+        
+        .alert-error {
+            background-color: rgba(231, 76, 60, 0.1);
+            border-left: 4px solid var(--error);
+            color: var(--error-dark);
+        }
+        
+        .alert-info {
+            background-color: rgba(0, 123, 255, 0.1);
+            border-left: 4px solid var(--primary);
+            color: var(--primary-dark);
+        }
+        
+        /* Example Implementation */
+        .example {
+            background: white;
+            border-radius: var(--radius-xl);
+            padding: var(--space-8);
+            margin-top: var(--space-12);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .example-title {
+            text-align: center;
+            font-size: var(--text-2xl);
+            margin-bottom: var(--space-8);
+            color: var(--gray-800);
+            font-weight: var(--font-semibold);
+        }
+        
+        /* Footer */
+        .footer {
+            text-align: center;
+            margin-top: var(--space-12);
+            padding: var(--space-6);
+            color: var(--gray-600);
+            font-size: var(--text-sm);
+        }
+        
+        /* Utility Classes */
+        .mb-4 { margin-bottom: var(--space-4); }
+        .mb-6 { margin-bottom: var(--space-6); }
+        .mt-4 { margin-top: var(--space-4); }
+        .mt-6 { margin-top: var(--space-6); }
+        .p-4 { padding: var(--space-4); }
+        .text-center { text-align: center; }
+        
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            body {
+                padding: var(--space-4);
+            }
+            
+            .design-system {
+                grid-template-columns: 1fr;
+            }
+            
+            .button-group {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Clipzy Design System</h1>
+            <p class="subtitle">A comprehensive design system for building consistent, beautiful SaaS interfaces</p>
+        </div>
+        
+        <div class="design-system">
+            <!-- Color Palette -->
+            <div class="section">
+                <h2 class="section-title">Color Palette</h2>
+                <div class="color-grid">
+                    <div class="color-item">
+                        <div class="color-box" style="background: var(--primary);">Primary</div>
+                        <div class="color-name">#007bff</div>
+                    </div>
+                    <div class="color-item">
+                        <div class="color-box" style="background: var(--secondary);">Secondary</div>
+                        <div class="color-name">#5865f2</div>
+                    </div>
+                    <div class="color-item">
+                        <div class="color-box" style="background: var(--success);">Success</div>
+                        <div class="color-name">#2ecc71</div>
+                    </div>
+                    <div class="color-item">
+                        <div class="color-box" style="background: var(--warning);">Warning</div>
+                        <div class="color-name">#f39c12</div>
+                    </div>
+                    <div class="color-item">
+                        <div class="color-box" style="background: var(--error);">Error</div>
+                        <div class="color-name">#e74c3c</div>
+                    </div>
+                    <div class="color-item">
+                        <div class="color-box" style="background: var(--neutral); color: white;">Neutral</div>
+                        <div class="color-name">#9b59b6</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Typography -->
+            <div class="section">
+                <h2 class="section-title">Typography</h2>
+                <div class="typography-item">
+                    <div class="typography-example" style="font-size: var(--text-4xl); font-weight: var(--font-bold);">Heading 1</div>
+                    <div class="typography-details">Size: 2.25rem · Weight: Bold · Line Height: 1.2</div>
+                </div>
+                <div class="typography-item">
+                    <div class="typography-example" style="font-size: var(--text-3xl); font-weight: var(--font-bold);">Heading 2</div>
+                    <div class="typography-details">Size: 1.875rem · Weight: Bold · Line Height: 1.3</div>
+                </div>
+                <div class="typography-item">
+                    <div class="typography-example" style="font-size: var(--text-2xl); font-weight: var(--font-semibold);">Heading 3</div>
+                    <div class="typography-details">Size: 1.5rem · Weight: Semibold · Line Height: 1.4</div>
+                </div>
+                <div class="typography-item">
+                    <div class="typography-example" style="font-size: var(--text-xl); font-weight: var(--font-semibold);">Heading 4</div>
+                    <div class="typography-details">Size: 1.25rem · Weight: Semibold · Line Height: 1.5</div>
+                </div>
+                <div class="typography-item">
+                    <div class="typography-example" style="font-size: var(--text-lg); font-weight: var(--font-medium);">Subtitle</div>
+                    <div class="typography-details">Size: 1.125rem · Weight: Medium · Line Height: 1.6</div>
+                </div>
+                <div class="typography-item">
+                    <div class="typography-example" style="font-size: var(--text-base);">Body Text</div>
+                    <div class="typography-details">Size: 1rem · Weight: Normal · Line Height: 1.6</div>
+                </div>
+                <div class="typography-item">
+                    <div class="typography-example" style="font-size: var(--text-sm); color: var(--gray-600);">Small Text</div>
+                    <div class="typography-details">Size: 0.875rem · Weight: Normal · Color: #6b7280</div>
+                </div>
+            </div>
+            
+            <!-- Components -->
+            <div class="section">
+                <h2 class="section-title">Components</h2>
+                
+                <div class="component">
+                    <h3 class="component-title">Buttons</h3>
+                    <div class="button-group">
+                        <a href="#" class="button button-primary">Primary</a>
+                        <a href="#" class="button button-secondary">Secondary</a>
+                        <a href="#" class="button button-success">Success</a>
+                        <a href="#" class="button button-error">Error</a>
+                    </div>
+                    <div class="button-group">
+                        <a href="#" class="button button-outline">Outline</a>
+                    </div>
+                </div>
+                
+                <div class="component">
+                    <h3 class="component-title">Cards</h3>
+                    <div class="card">
+                        <h4 class="card-title">Default Card</h4>
+                        <p>This is an example of a default card with a subtle shadow and hover effect.</p>
+                    </div>
+                </div>
+                
+                <div class="component">
+                    <h3 class="component-title">Alerts</h3>
+                    <div class="alert alert-success">
+                        <div>✅ This is a success alert message.</div>
+                    </div>
+                    <div class="alert alert-warning">
+                        <div>⚠️ This is a warning alert message.</div>
+                    </div>
+                    <div class="alert alert-error">
+                        <div>❌ This is an error alert message.</div>
+                    </div>
+                    <div class="alert alert-info">
+                        <div>ℹ️ This is an info alert message.</div>
+                    </div>
+                </div>
+                
+                <div class="component">
+                    <h3 class="component-title">Form Elements</h3>
+                    <div class="form-group">
+                        <label class="form-label">Email Address</label>
+                        <input type="email" class="form-input" placeholder="you@example.com">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Password</label>
+                        <input type="password" class="form-input" placeholder="Enter your password">
+                    </div>
+                    <button class="button button-primary">Sign In</button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Example Implementation -->
+        <div class="example">
+            <h2 class="example-title">Example Implementation</h2>
+            
+            <div class="card mb-6">
+                <h3 class="card-title">User Login</h3>
+                <div class="form-group">
+                    <label class="form-label">Username or Email</label>
+                    <input type="text" class="form-input" placeholder="Enter your username">
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Password</label>
+                    <input type="password" class="form-input" placeholder="Enter your password">
+                </div>
+                <div class="form-group">
+                    <button class="button button-primary" style="width: 100%;">Login</button>
+                </div>
+                <div class="text-center">
+                    <a href="#" style="color: var(--primary); text-decoration: none; font-size: var(--text-sm);">Forgot your password?</a>
+                </div>
+            </div>
+            
+            <div class="alert alert-info">
+                <div>🔒 Your security is important to us. We use end-to-end encryption for all sensitive data.</div>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>© 2023 Clipzy Design System · Built with consistency and scalability in mind</p>
+        </div>
+    </div>
+</body>
+</html>
