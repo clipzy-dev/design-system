@@ -3,590 +3,409 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Clipzy Design System</title>
+    <title>SaaS Design System</title>
+    <!-- Google Fonts for Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
+        /* CSS Custom Properties (Design Tokens) - Light Theme */
         :root {
-            /* Color System */
-            --primary: #007bff;
-            --primary-light: #4da3ff;
-            --primary-dark: #0056b3;
-            
-            --secondary: #5865f2;
-            --secondary-light: #7983f5;
-            --secondary-dark: #4752c4;
-            
-            --success: #2ecc71;
-            --success-light: #58d68d;
-            --success-dark: #27ae60;
-            
-            --warning: #f39c12;
-            --warning-light: #f4b350;
-            --warning-dark: #d68910;
-            
-            --error: #e74c3c;
-            --error-light: #ec7063;
-            --error-dark: #cb4335;
-            
-            --neutral: #9b59b6;
-            --neutral-light: #af7ac5;
-            --neutral-dark: #884ea0;
-            
-            /* Neutral Colors */
-            --gray-50: #f9fafb;
-            --gray-100: #f3f4f6;
-            --gray-200: #e5e7eb;
-            --gray-300: #d1d5db;
-            --gray-400: #9ca3af;
-            --gray-500: #6b7280;
-            --gray-600: #4b5563;
-            --gray-700: #374151;
-            --gray-800: #1f2937;
-            --gray-900: #111827;
-            
-            /* Typography */
-            --font-family: 'Inter', "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            
-            --text-xs: 0.75rem;
-            --text-sm: 0.875rem;
-            --text-base: 1rem;
-            --text-lg: 1.125rem;
-            --text-xl: 1.25rem;
-            --text-2xl: 1.5rem;
-            --text-3xl: 1.875rem;
-            --text-4xl: 2.25rem;
-            
-            --font-light: 300;
-            --font-normal: 400;
-            --font-medium: 500;
-            --font-semibold: 600;
-            --font-bold: 700;
-            
-            /* Spacing */
-            --space-1: 0.25rem;
-            --space-2: 0.5rem;
-            --space-3: 0.75rem;
-            --space-4: 1rem;
-            --space-5: 1.25rem;
-            --space-6: 1.5rem;
-            --space-8: 2rem;
-            --space-10: 2.5rem;
-            --space-12: 3rem;
-            --space-16: 4rem;
-            --space-20: 5rem;
-            --space-24: 6rem;
-            
-            /* Border Radius */
-            --radius-sm: 0.125rem;
-            --radius: 0.25rem;
-            --radius-md: 0.375rem;
-            --radius-lg: 0.5rem;
-            --radius-xl: 0.75rem;
-            --radius-2xl: 1rem;
-            --radius-full: 9999px;
-            
-            /* Shadows */
-            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-            --shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
-            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-            --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-            --shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-            
-            /* Transitions */
-            --transition: all 0.2s ease;
-            --transition-slow: all 0.4s ease;
+            /* Provided Color Palette */
+            --color-sky-blue: #0284c7;
+            --color-darker-blue: #0369a1;
+            --color-dark-cyan: #075985;
+            --color-slate: #1e293b;
+            --color-slate-gray: #475569;
+            --color-light-blue-gray: #eef2f5;
+            --color-slate-gray-alt: #64748b;
+            --color-slate-gray-light: #94a3b8;
+            --color-light-gray: #f1f5f9;
+
+            /* Mapped Design System Colors */
+            --color-primary: var(--color-sky-blue);
+            --color-primary-dark: var(--color-darker-blue);
+            --color-secondary: var(--color-dark-cyan);
+            --color-success: #10B981;
+            --color-danger: #EF4444;
+            --color-text-dark: var(--color-slate);
+            --color-text-medium: var(--color-slate-gray);
+            --color-text-light: var(--color-slate-gray-light);
+            --color-background: var(--color-light-gray);
+            --color-surface: #ffffff;
+            --color-border: var(--color-light-blue-gray);
+        }
+
+        /* Base Styles */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--color-background);
+            color: var(--color-text-dark);
+            line-height: 1.6;
+            margin: 0;
+            padding: 2rem;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .ds-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem;
+            background-color: var(--color-surface);
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            border: 1px solid var(--color-border);
+            transition: background-color 0.3s ease, border-color 0.3s ease;
+        }
+
+        /* Typography */
+        h1, h2, h3, h4 {
+            font-weight: 600;
+            line-height: 1.2;
+            margin-top: 2rem;
+            margin-bottom: 0.5rem;
+            color: var(--color-text-dark);
+        }
+
+        h1 { font-size: 2.5rem; }
+        h2 { font-size: 2rem; }
+        h3 { font-size: 1.5rem; }
+        h4 { font-size: 1.25rem; }
+
+        p {
+            font-size: 1rem;
+            color: var(--color-text-medium);
+            margin-bottom: 1rem;
+        }
+
+        .ds-lead-text {
+            font-size: 1.125rem;
+            color: var(--color-text-medium);
+        }
+
+        hr {
+            border: none;
+            height: 1px;
+            background-color: var(--color-border);
+            margin: 2rem 0;
+        }
+
+        /* Buttons */
+        .ds-button {
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            text-align: center;
+            border: 1px solid transparent;
+            transition: all 0.2s ease-in-out;
+            cursor: pointer;
+            font-size: 1rem;
+            margin-right: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .ds-button-primary {
+            background-color: var(--color-primary);
+            color: white;
+        }
+        .ds-button-primary:hover {
+            background-color: var(--color-primary-dark);
+        }
+
+        .ds-button-secondary {
+            background-color: var(--color-secondary);
+            color: white;
+        }
+        .ds-button-secondary:hover {
+            background-color: var(--color-primary-dark);
+        }
+
+        .ds-button-ghost {
+            background-color: transparent;
+            color: var(--color-text-dark);
+            border-color: var(--color-border);
+        }
+        .ds-button-ghost:hover {
+            background-color: var(--color-light-gray);
         }
         
-        * {
-            margin: 0;
-            padding: 0;
+        .ds-button:disabled, .ds-button-disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        /* Form Elements */
+        .ds-form-group {
+            margin-bottom: 1.5rem;
+        }
+        .ds-label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: var(--color-text-dark);
+        }
+        .ds-input, .ds-textarea {
+            width: 100%;
+            padding: 0.75rem;
+            font-size: 1rem;
+            border: 1px solid var(--color-border);
+            border-radius: 8px;
+            background-color: var(--color-surface);
+            color: var(--color-text-dark);
+            transition: all 0.2s ease-in-out;
             box-sizing: border-box;
         }
-        
-        body {
-            font-family: var(--font-family);
-            line-height: 1.6;
-            color: var(--gray-800);
-            background-color: var(--gray-50);
-            padding: var(--space-8);
-        }
-        
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        
-        /* Header */
-        .header {
-            text-align: center;
-            margin-bottom: var(--space-12);
-            padding: var(--space-8);
-            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
-            border-radius: var(--radius-xl);
-            color: white;
-            box-shadow: var(--shadow-lg);
-        }
-        
-        h1 {
-            font-size: var(--text-4xl);
-            margin-bottom: var(--space-4);
-            font-weight: var(--font-bold);
-        }
-        
-        .subtitle {
-            font-size: var(--text-xl);
-            opacity: 0.9;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-        
-        /* Design System Grid */
-        .design-system {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: var(--space-8);
-            margin-bottom: var(--space-12);
-        }
-        
-        .section {
-            background: white;
-            border-radius: var(--radius-lg);
-            padding: var(--space-6);
-            box-shadow: var(--shadow-md);
-        }
-        
-        .section-title {
-            font-size: var(--text-2xl);
-            margin-bottom: var(--space-6);
-            padding-bottom: var(--space-3);
-            border-bottom: 2px solid var(--primary);
-            color: var(--gray-800);
-            font-weight: var(--font-semibold);
-        }
-        
-        /* Color Palette */
-        .color-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-            gap: var(--space-4);
-        }
-        
-        .color-item {
-            text-align: center;
-            border-radius: var(--radius-md);
-            overflow: hidden;
-            box-shadow: var(--shadow-sm);
-        }
-        
-        .color-box {
-            height: 80px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: var(--font-semibold);
-            color: white;
-        }
-        
-        .color-name {
-            padding: var(--space-2);
-            background: white;
-            font-size: var(--text-xs);
-            color: var(--gray-600);
-            border-top: 1px solid var(--gray-200);
-        }
-        
-        /* Typography */
-        .typography-item {
-            margin-bottom: var(--space-5);
-        }
-        
-        .typography-example {
-            margin-bottom: var(--space-1);
-        }
-        
-        .typography-details {
-            color: var(--gray-600);
-            font-size: var(--text-sm);
-        }
-        
-        /* Components */
-        .component {
-            margin-bottom: var(--space-6);
-        }
-        
-        .component-title {
-            font-size: var(--text-lg);
-            margin-bottom: var(--space-4);
-            color: var(--gray-800);
-            font-weight: var(--font-medium);
-        }
-        
-        .button {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            padding: var(--space-3) var(--space-5);
-            border-radius: var(--radius);
-            font-weight: var(--font-medium);
-            text-decoration: none;
-            transition: var(--transition);
-            border: none;
-            cursor: pointer;
-            font-family: var(--font-family);
-            font-size: var(--text-base);
-            line-height: 1;
-        }
-        
-        .button-primary {
-            background: var(--primary);
-            color: white;
-        }
-        
-        .button-primary:hover {
-            background: var(--primary-dark);
-            transform: translateY(-1px);
-            box-shadow: var(--shadow-md);
-        }
-        
-        .button-secondary {
-            background: var(--secondary);
-            color: white;
-        }
-        
-        .button-secondary:hover {
-            background: var(--secondary-dark);
-            transform: translateY(-1px);
-            box-shadow: var(--shadow-md);
-        }
-        
-        .button-success {
-            background: var(--success);
-            color: white;
-        }
-        
-        .button-success:hover {
-            background: var(--success-dark);
-            transform: translateY(-1px);
-            box-shadow: var(--shadow-md);
-        }
-        
-        .button-error {
-            background: var(--error);
-            color: white;
-        }
-        
-        .button-error:hover {
-            background: var(--error-dark);
-            transform: translateY(-1px);
-            box-shadow: var(--shadow-md);
-        }
-        
-        .button-outline {
-            background: transparent;
-            color: var(--primary);
-            border: 1px solid var(--primary);
-        }
-        
-        .button-outline:hover {
-            background: var(--primary);
-            color: white;
-        }
-        
-        .button-group {
-            display: flex;
-            gap: var(--space-3);
-            margin-bottom: var(--space-4);
-        }
-        
-        .card {
-            background: white;
-            border-radius: var(--radius-lg);
-            padding: var(--space-5);
-            box-shadow: var(--shadow-sm);
-            border: 1px solid var(--gray-200);
-            transition: var(--transition);
-        }
-        
-        .card:hover {
-            box-shadow: var(--shadow-md);
-            transform: translateY(-2px);
-        }
-        
-        .card-title {
-            font-size: var(--text-lg);
-            margin-bottom: var(--space-3);
-            color: var(--gray-800);
-            font-weight: var(--font-semibold);
-        }
-        
-        .form-group {
-            margin-bottom: var(--space-5);
-        }
-        
-        .form-label {
-            display: block;
-            margin-bottom: var(--space-2);
-            font-weight: var(--font-medium);
-            color: var(--gray-700);
-        }
-        
-        .form-input {
-            width: 100%;
-            padding: var(--space-3);
-            border: 1px solid var(--gray-300);
-            border-radius: var(--radius);
-            font-family: var(--font-family);
-            font-size: var(--text-base);
-            transition: var(--transition);
-        }
-        
-        .form-input:focus {
+        .ds-input:focus, .ds-textarea:focus {
             outline: none;
-            border-color: var(--primary);
-            box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.1);
+            border-color: var(--color-primary);
+            box-shadow: 0 0 0 2px rgba(2, 132, 199, 0.2);
         }
-        
-        .alert {
-            padding: var(--space-4);
-            border-radius: var(--radius);
-            margin-bottom: var(--space-4);
+
+        /* Cards */
+        .ds-card {
+            background-color: var(--color-surface);
+            border-radius: 12px;
+            padding: 1.5rem;
+            border: 1px solid var(--color-border);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+            margin-top: 1rem;
+            transition: background-color 0.3s ease, border-color 0.3s ease;
+        }
+
+        /* Badges/Tags */
+        .ds-badge {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.875rem;
+            font-weight: 500;
+            margin-right: 0.5rem;
+            color: white;
+        }
+
+        .ds-badge-primary { background-color: var(--color-primary); }
+        .ds-badge-secondary { background-color: var(--color-secondary); }
+        .ds-badge-success { background-color: var(--color-success); }
+        .ds-badge-danger { background-color: var(--color-danger); }
+
+        /* Alerts */
+        .ds-alert {
+            padding: 1rem 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            border: 1px solid;
+            font-weight: 500;
+            line-height: 1.4;
+        }
+
+        .ds-alert-success {
+            background-color: #d1fae5;
+            color: var(--color-success);
+            border-color: var(--color-success);
+        }
+
+        .ds-alert-danger {
+            background-color: #fee2e2;
+            color: var(--color-danger);
+            border-color: var(--color-danger);
+        }
+
+        /* Color list styling */
+        .color-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        .color-item {
             display: flex;
-            align-items: flex-start;
+            align-items: center;
         }
-        
-        .alert-success {
-            background-color: rgba(46, 204, 113, 0.1);
-            border-left: 4px solid var(--success);
-            color: var(--success-dark);
+        .color-box {
+            width: 2rem;
+            height: 2rem;
+            border-radius: 4px;
+            margin-right: 0.75rem;
+            border: 1px solid var(--color-border);
         }
-        
-        .alert-warning {
-            background-color: rgba(243, 156, 18, 0.1);
-            border-left: 4px solid var(--warning);
-            color: var(--warning-dark);
+        .color-name {
+            font-weight: 500;
+            color: var(--color-text-dark);
         }
-        
-        .alert-error {
-            background-color: rgba(231, 76, 60, 0.1);
-            border-left: 4px solid var(--error);
-            color: var(--error-dark);
-        }
-        
-        .alert-info {
-            background-color: rgba(0, 123, 255, 0.1);
-            border-left: 4px solid var(--primary);
-            color: var(--primary-dark);
-        }
-        
-        /* Example Implementation */
-        .example {
-            background: white;
-            border-radius: var(--radius-xl);
-            padding: var(--space-8);
-            margin-top: var(--space-12);
-            box-shadow: var(--shadow-lg);
-        }
-        
-        .example-title {
-            text-align: center;
-            font-size: var(--text-2xl);
-            margin-bottom: var(--space-8);
-            color: var(--gray-800);
-            font-weight: var(--font-semibold);
-        }
-        
-        /* Footer */
-        .footer {
-            text-align: center;
-            margin-top: var(--space-12);
-            padding: var(--space-6);
-            color: var(--gray-600);
-            font-size: var(--text-sm);
-        }
-        
-        /* Utility Classes */
-        .mb-4 { margin-bottom: var(--space-4); }
-        .mb-6 { margin-bottom: var(--space-6); }
-        .mt-4 { margin-top: var(--space-4); }
-        .mt-6 { margin-top: var(--space-6); }
-        .p-4 { padding: var(--space-4); }
-        .text-center { text-align: center; }
-        
-        /* Responsive Adjustments */
-        @media (max-width: 768px) {
-            body {
-                padding: var(--space-4);
-            }
-            
-            .design-system {
-                grid-template-columns: 1fr;
-            }
-            
-            .button-group {
-                flex-direction: column;
-                align-items: flex-start;
-            }
+        .color-hash {
+            font-size: 0.875rem;
+            color: var(--color-text-medium);
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="header">
-            <h1>Clipzy Design System</h1>
-            <p class="subtitle">A comprehensive design system for building consistent, beautiful SaaS interfaces</p>
-        </div>
+    <div class="ds-container">
+        <h1>Clipzy Design System</h1>
+        <p class="ds-lead-text">
+            A comprehensive, accessible, and modular design system for your SaaS.
+            All components are designed with optimal color contrast to work seamlessly.
+        </p>
         
-        <div class="design-system">
-            <!-- Color Palette -->
-            <div class="section">
-                <h2 class="section-title">Color Palette</h2>
-                <div class="color-grid">
-                    <div class="color-item">
-                        <div class="color-box" style="background: var(--primary);">Primary</div>
-                        <div class="color-name">#007bff</div>
-                    </div>
-                    <div class="color-item">
-                        <div class="color-box" style="background: var(--secondary);">Secondary</div>
-                        <div class="color-name">#5865f2</div>
-                    </div>
-                    <div class="color-item">
-                        <div class="color-box" style="background: var(--success);">Success</div>
-                        <div class="color-name">#2ecc71</div>
-                    </div>
-                    <div class="color-item">
-                        <div class="color-box" style="background: var(--warning);">Warning</div>
-                        <div class="color-name">#f39c12</div>
-                    </div>
-                    <div class="color-item">
-                        <div class="color-box" style="background: var(--error);">Error</div>
-                        <div class="color-name">#e74c3c</div>
-                    </div>
-                    <div class="color-item">
-                        <div class="color-box" style="background: var(--neutral); color: white;">Neutral</div>
-                        <div class="color-name">#9b59b6</div>
-                    </div>
+        <hr>
+
+        <h2>Color Palette</h2>
+        <div class="color-list">
+            <div class="color-item">
+                <div class="color-box" style="background-color: var(--color-sky-blue);"></div>
+                <div>
+                    <div class="color-name">Sky Blue (Primary)</div>
+                    <div class="color-hash">#0284c7</div>
                 </div>
             </div>
-            
-            <!-- Typography -->
-            <div class="section">
-                <h2 class="section-title">Typography</h2>
-                <div class="typography-item">
-                    <div class="typography-example" style="font-size: var(--text-4xl); font-weight: var(--font-bold);">Heading 1</div>
-                    <div class="typography-details">Size: 2.25rem · Weight: Bold · Line Height: 1.2</div>
-                </div>
-                <div class="typography-item">
-                    <div class="typography-example" style="font-size: var(--text-3xl); font-weight: var(--font-bold);">Heading 2</div>
-                    <div class="typography-details">Size: 1.875rem · Weight: Bold · Line Height: 1.3</div>
-                </div>
-                <div class="typography-item">
-                    <div class="typography-example" style="font-size: var(--text-2xl); font-weight: var(--font-semibold);">Heading 3</div>
-                    <div class="typography-details">Size: 1.5rem · Weight: Semibold · Line Height: 1.4</div>
-                </div>
-                <div class="typography-item">
-                    <div class="typography-example" style="font-size: var(--text-xl); font-weight: var(--font-semibold);">Heading 4</div>
-                    <div class="typography-details">Size: 1.25rem · Weight: Semibold · Line Height: 1.5</div>
-                </div>
-                <div class="typography-item">
-                    <div class="typography-example" style="font-size: var(--text-lg); font-weight: var(--font-medium);">Subtitle</div>
-                    <div class="typography-details">Size: 1.125rem · Weight: Medium · Line Height: 1.6</div>
-                </div>
-                <div class="typography-item">
-                    <div class="typography-example" style="font-size: var(--text-base);">Body Text</div>
-                    <div class="typography-details">Size: 1rem · Weight: Normal · Line Height: 1.6</div>
-                </div>
-                <div class="typography-item">
-                    <div class="typography-example" style="font-size: var(--text-sm); color: var(--gray-600);">Small Text</div>
-                    <div class="typography-details">Size: 0.875rem · Weight: Normal · Color: #6b7280</div>
+            <div class="color-item">
+                <div class="color-box" style="background-color: var(--color-darker-blue);"></div>
+                <div>
+                    <div class="color-name">Darker Blue (Primary Dark)</div>
+                    <div class="color-hash">#0369a1</div>
                 </div>
             </div>
-            
-            <!-- Components -->
-            <div class="section">
-                <h2 class="section-title">Components</h2>
-                
-                <div class="component">
-                    <h3 class="component-title">Buttons</h3>
-                    <div class="button-group">
-                        <a href="#" class="button button-primary">Primary</a>
-                        <a href="#" class="button button-secondary">Secondary</a>
-                        <a href="#" class="button button-success">Success</a>
-                        <a href="#" class="button button-error">Error</a>
-                    </div>
-                    <div class="button-group">
-                        <a href="#" class="button button-outline">Outline</a>
-                    </div>
+            <div class="color-item">
+                <div class="color-box" style="background-color: var(--color-dark-cyan);"></div>
+                <div>
+                    <div class="color-name">Dark Cyan (Secondary)</div>
+                    <div class="color-hash">#075985</div>
                 </div>
-                
-                <div class="component">
-                    <h3 class="component-title">Cards</h3>
-                    <div class="card">
-                        <h4 class="card-title">Default Card</h4>
-                        <p>This is an example of a default card with a subtle shadow and hover effect.</p>
-                    </div>
+            </div>
+            <div class="color-item">
+                <div class="color-box" style="background-color: var(--color-slate);"></div>
+                <div>
+                    <div class="color-name">Slate (Dark Text)</div>
+                    <div class="color-hash">#1e293b</div>
                 </div>
-                
-                <div class="component">
-                    <h3 class="component-title">Alerts</h3>
-                    <div class="alert alert-success">
-                        <div>✅ This is a success alert message.</div>
-                    </div>
-                    <div class="alert alert-warning">
-                        <div>⚠️ This is a warning alert message.</div>
-                    </div>
-                    <div class="alert alert-error">
-                        <div>❌ This is an error alert message.</div>
-                    </div>
-                    <div class="alert alert-info">
-                        <div>ℹ️ This is an info alert message.</div>
-                    </div>
+            </div>
+            <div class="color-item">
+                <div class="color-box" style="background-color: var(--color-slate-gray);"></div>
+                <div>
+                    <div class="color-name">Slate Gray (Medium Text)</div>
+                    <div class="color-hash">#475569</div>
                 </div>
-                
-                <div class="component">
-                    <h3 class="component-title">Form Elements</h3>
-                    <div class="form-group">
-                        <label class="form-label">Email Address</label>
-                        <input type="email" class="form-input" placeholder="you@example.com">
-                    </div>
-                    <div class="form-group">
-                        <label class="form-label">Password</label>
-                        <input type="password" class="form-input" placeholder="Enter your password">
-                    </div>
-                    <button class="button button-primary">Sign In</button>
+            </div>
+            <div class="color-item">
+                <div class="color-box" style="background-color: var(--color-light-blue-gray);"></div>
+                <div>
+                    <div class="color-name">Light Blue-Gray (Border)</div>
+                    <div class="color-hash">#eef2f5</div>
+                </div>
+            </div>
+            <div class="color-item">
+                <div class="color-box" style="background-color: var(--color-slate-gray-alt);"></div>
+                <div>
+                    <div class="color-name">Slate Gray Alt</div>
+                    <div class="color-hash">#64748b</div>
+                </div>
+            </div>
+            <div class="color-item">
+                <div class="color-box" style="background-color: var(--color-slate-gray-light);"></div>
+                <div>
+                    <div class="color-name">Slate Gray Light (Light Text)</div>
+                    <div class="color-hash">#94a3b8</div>
+                </div>
+            </div>
+            <div class="color-item">
+                <div class="color-box" style="background-color: var(--color-light-gray);"></div>
+                <div>
+                    <div class="color-name">Light Gray (Background)</div>
+                    <div class="color-hash">#f1f5f9</div>
                 </div>
             </div>
         </div>
+
+        <hr>
+
+        <h2>Typography</h2>
+        <h1>Heading 1 - The quick brown fox jumps over the lazy dog</h1>
+        <p>This is a paragraph with default font size and line height. It’s clean, easy to read, and works well for long-form content. The color is defined by <code>var(--color-text-medium)</code>.</p>
+        <h2>Heading 2 - The quick brown fox jumps over the lazy dog</h2>
+        <h3>Heading 3 - The quick brown fox jumps over the lazy dog</h3>
+        <h4>Heading 4 - The quick brown fox jumps over the lazy dog</h4>
+
+        <hr>
+
+        <h2>Styling Details</h2>
+        <p>This section provides a summary of the key styling choices used throughout the design system.</p>
+        <h3>Font Family</h3>
+        <p>The primary font for the entire design system is **Inter**, sourced from Google Fonts. This font was chosen for its excellent readability and modern, professional look. The stylesheet imports and utilizes different font weights to create a clear visual hierarchy for headings and body text.</p>
+        <h3>Key Stylings</h3>
+        <ul>
+            <li>**Corner Rounding:** A consistent `border-radius` of **12px** is used for main containers and cards, while buttons and form fields use **8px** for a slightly tighter, more functional look. Badges are given a full pill-shape with `9999px`.</li>
+            <li>**Shadows:** Subtle `box-shadow` is applied to cards and the main container (`.ds-container`) to give them a slight lift off the background, adding depth and visual separation.</li>
+            <li>**Transitions:** Smooth `transition` effects are used on buttons, inputs, and the overall container to create a fluid and responsive user experience when hovering or changing states.</li>
+            <li>**Color Variables:** All colors are defined using CSS custom properties (`--color-...`) in the `:root` pseudo-class. This allows for quick and easy color changes across the entire system by simply modifying a single variable.</li>
+        </ul>
+
+        <hr>
+
+        <h2>Buttons</h2>
+        <a href="#" class="ds-button ds-button-primary">Primary Button</a>
+        <a href="#" class="ds-button ds-button-secondary">Secondary Button</a>
+        <a href="#" class="ds-button ds-button-ghost">Ghost Button</a>
+        <button class="ds-button ds-button-primary ds-button-disabled" disabled>Disabled</button>
+
+        <hr>
         
-        <!-- Example Implementation -->
-        <div class="example">
-            <h2 class="example-title">Example Implementation</h2>
-            
-            <div class="card mb-6">
-                <h3 class="card-title">User Login</h3>
-                <div class="form-group">
-                    <label class="form-label">Username or Email</label>
-                    <input type="text" class="form-input" placeholder="Enter your username">
-                </div>
-                <div class="form-group">
-                    <label class="form-label">Password</label>
-                    <input type="password" class="form-input" placeholder="Enter your password">
-                </div>
-                <div class="form-group">
-                    <button class="button button-primary" style="width: 100%;">Login</button>
-                </div>
-                <div class="text-center">
-                    <a href="#" style="color: var(--primary); text-decoration: none; font-size: var(--text-sm);">Forgot your password?</a>
-                </div>
-            </div>
-            
-            <div class="alert alert-info">
-                <div>🔒 Your security is important to us. We use end-to-end encryption for all sensitive data.</div>
-            </div>
+        <h2>Forms & Inputs</h2>
+        <div class="ds-form-group">
+            <label for="ds-input-1" class="ds-label">Text Input</label>
+            <input type="text" id="ds-input-1" class="ds-input" placeholder="e.g., John Doe">
+        </div>
+        <div class="ds-form-group">
+            <label for="ds-textarea-1" class="ds-label">Textarea</label>
+            <textarea id="ds-textarea-1" class="ds-textarea" rows="4" placeholder="Type your message here..."></textarea>
         </div>
         
-        <div class="footer">
-            <p>© 2023 Clipzy Design System · Built with consistency and scalability in mind</p>
+        <hr>
+        
+        <h2>Cards</h2>
+        <div class="ds-card">
+            <h3 style="margin-top: 0;">Card Title</h3>
+            <p style="margin-bottom: 0;">Cards are a great way to group related information and make your UI more scannable. They use a subtle shadow and rounded corners for a modern feel.</p>
+        </div>
+
+        <hr>
+
+        <h2>Badges & Alerts</h2>
+        <div style="margin-bottom: 1rem;">
+            <span class="ds-badge ds-badge-primary">Beta</span>
+            <span class="ds-badge ds-badge-secondary">New</span>
+            <span class="ds-badge ds-badge-success">Success</span>
+            <span class="ds-badge ds-badge-danger">Danger</span>
+        </div>
+        <div class="ds-alert ds-alert-success">
+            Your changes have been saved successfully.
+        </div>
+        <div class="ds-alert ds-alert-danger">
+            An error occurred. Please try again later.
+        </div>
+        
+        <hr>
+
+        <h2>Email Template</h2>
+        <div style="background-color: var(--color-light-gray); padding: 20px; font-family: sans-serif; line-height: 1.6;">
+            <div style="max-width: 600px; margin: 0 auto; background-color: var(--color-surface); padding: 20px; border-radius: 8px; border: 1px solid var(--color-border);">
+                <h2 style="text-align: center; color: var(--color-primary);">Welcome to Clipzy!</h2>
+                <p>Hello [User Name],</p>
+                <p>Thank you for signing up for Clipzy. We are excited to have you on board!</p>
+                <p>To get started, please confirm your email address by clicking the button below:</p>
+                <div style="text-align: center; margin: 20px 0;">
+                    <a href="#" style="background-color: var(--color-primary); color: white; padding: 12px 24px; text-decoration: none; border-radius: 8px; font-weight: 600; display: inline-block;">Confirm Email</a>
+                </div>
+                <p>If you have any questions, feel free to reply to this email. We're always here to help.</p>
+                <p>Best regards,</p>
+                <p>The Clipzy Team</p>
+                <hr style="margin: 20px 0; border-color: var(--color-border);">
+                <p style="text-align: center; font-size: 12px; color: var(--color-text-light);">
+                    You are receiving this email because you signed up on our website.
+                    <br>
+                    © 2024 Clipzy. All rights reserved.
+                </p>
+            </div>
         </div>
     </div>
 </body>
